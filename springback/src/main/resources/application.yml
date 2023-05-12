@@ -1,0 +1,23 @@
+spring:
+  datasource:
+#    username: a8qt8rd4wvt45smi4mhg
+    url: jdbc:mysql://localhost:3306/ems?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+#    url: jdbc:mysql://aws.connect.psdb.cloud/zavi?sslMode=VERIFY_IDENTITY
+#    password: pscale_pw_4EHK1K2CsxadO1CHH3kOI3G00FvODIrBnfrcLkr1anq
+    username: root
+    password: password
+
+  jpa:
+    generate-ddl: 'true'
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+  main:
+    allow-bean-definition-overriding: true
+  security:
+    user:
+      name: user
+      password: password
+
