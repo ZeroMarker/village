@@ -6,3 +6,4 @@ venv/
 .Rproj.user
 cmake-build-debug/
 archive/
+.jython_cache/

@@ -1,9 +1,10 @@
 import React,{useState,useEffect} from 'react'
 import DocumentService from '../../services/DocumentService'
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import Header from "../../layouts/Header";
-import {useNavigate} from "react-router-dom";
+
 import {Card} from "react-bootstrap";
+import Footer from "../../layouts/Footer";
 
 const Doc = () => {
 
@@ -44,6 +45,7 @@ const Doc = () => {
             <Card>
 
                 <Card.Body>
+                    <Link to="/document" className="text-decoration-none">返回</Link>
                     <Card.Title>{document.title}</Card.Title>
                     <Card.Header>{document.time}</Card.Header>
                     <Card.Text>
@@ -52,6 +54,7 @@ const Doc = () => {
                 </Card.Body>
 
             </Card>
+            <Footer/>
         </div>
     )
 }

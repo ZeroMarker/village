@@ -10,6 +10,9 @@ class DocumentService {
         return axios.get(EMPLOYEE_BASE_REST_API_URL)
     }
 
+    getAllDocumentsByTitle(title) {
+        return axios.get(EMPLOYEE_BASE_REST_API_URL + "/find/" + title)
+    }
     createDocument(customer){
         return axios.post(EMPLOYEE_BASE_REST_API_URL,customer)
     }

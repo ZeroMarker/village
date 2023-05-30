@@ -8,11 +8,12 @@ data = pd.DataFrame(db_connection.connect().execute(text('SELECT * FROM info')))
 
 data.set_index("info_name", inplace=True)
 data.drop("info_id", axis=1, inplace=True)
-data.drop("account_id", axis=1, inplace=True)
+# data.drop("account_id", axis=1, inplace=True)
 
 indicator = data.columns.tolist()  # 指标个数
 project = data.index.tolist()  # 方案数、评价主体
 value = data.values
+data.to_csv('hello.csv', index=True)
 print(len(indicator))
 print(indicator)
 print(project)

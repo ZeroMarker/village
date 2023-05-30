@@ -4,9 +4,6 @@ import InfoService from '../../services/InfoService'
 
 const UpdateInfoComponent = ({id,setShowUpdateInfo,getAllInfos}) => {
 
-    const [title, setTitle] = useState("")
-    const [time, setTime] = useState("")
-    const [infoContent, setInfoContent] = useState("")
     const [infoName, setInfoName] = useState("");
     const [agriculture, setAgriculture] = useState("");
     const [education, setEducation] = useState("");
@@ -33,7 +30,7 @@ const UpdateInfoComponent = ({id,setShowUpdateInfo,getAllInfos}) => {
     const UpdateInfo = (e)=>{
         e.preventDefault();
 
-        const info = {title, time, infoContent};
+        const info = {infoName,agriculture,air,broadband,cable,data,education,emergency,government,irrigation,logistics,medical,mobile,online,power,soil,technology,traffic,water};
 
         // console.log(info)
 
@@ -51,18 +48,32 @@ const UpdateInfoComponent = ({id,setShowUpdateInfo,getAllInfos}) => {
         })
 
 
-
-
     }
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await InfoService.getInfoById(id);
-                const { title, time, infoContent } = response.data;
-                setTitle(title);
-                setTime(time);
-                setInfoContent(infoContent);
+                const { infoName,agriculture,air,broadband,cable,data,education,emergency,government,irrigation,logistics,medical,mobile,online,power,soil,technology,traffic,water  } = response.data;
+                setInfoName(infoName);
+                setData(data);
+                setCable(cable);
+                setOnline(online);
+                setAgriculture(agriculture);
+                setAir(air);
+                setBroadband(broadband);
+                setEducation(education);
+                setEmergency(emergency);
+                setGovernment(government);
+                setIrrigation(irrigation);
+                setLogistics(logistics);
+                setMedical(medical);
+                setMobile(mobile);
+                setPower(power);
+                setSoil(soil);
+                setTechnology(technology);
+                setTraffic(traffic);
+                setWater(water);
             } catch (error) {
                 console.log(error);
             }
@@ -73,43 +84,204 @@ const UpdateInfoComponent = ({id,setShowUpdateInfo,getAllInfos}) => {
 
 
     return (
-        <div style={{position:"absolute",width:"100%",top:"250px",left:"50%",transform:"translateX(-50%) translateY(-50%)"}}>
+        <div >
             <br/>
             <div className="">
                 <div className="row">
                     <div className="card col-md-6 offset-md-3 offset-md-3" style={{boxShadow:"1px 2px 2px grey,-1px -2px 2px grey"}}>
-                        <h2 className="text-center">更新文件</h2>
+                        <h2 className="text-center">编辑数据</h2>
                         <div className="card-body">
                             <form>
                                 <div className="form-group mb-2">
-                                    <label className="form-label">标题 :</label>
+                                    <label className="form-label">测度对象 :</label>
                                     <input
                                         type="text"
-                                        placeholder="标题"
-                                        name="title"
+                                        placeholder="Enter info name"
+                                        name="infoName"
                                         className="form-control"
-                                        value = {title}
-                                        onChange={e=>setTitle(e.target.value)} />
+                                        value = {infoName}
+                                        onChange={e=>setInfoName(e.target.value)} />
                                 </div>
                                 <div className="form-group mb-2">
-                                    <label className="form-label">时间 :</label>
+                                    <label className="form-label">广电网络 :</label>
                                     <input
                                         type="text"
-                                        placeholder="时间"
-                                        name="time"
+                                        placeholder="广电网络 "
+                                        name="cable"
                                         className="form-control"
-                                        value = {time}
-                                        onChange={e=>setTime(e.target.value)} />
+                                        value = {cable}
+                                        onChange={e=>setCable(e.target.value)} />
                                 </div>
                                 <div className="form-group mb-2">
-                                    <label className="form-label">文件内容 :</label>
+                                    <label className="form-label">宽带网络 :</label>
                                     <input
                                         type="text"
-                                        placeholder="文件内容"
-                                        name="infoContent"
+                                        placeholder="宽带网络 "
+                                        name="broadband"
                                         className="form-control"
-                                        value = {infoContent}
-                                        onChange={e=>setInfoContent(e.target.value)} />
+                                        value = {broadband}
+                                        onChange={e=>setBroadband(e.target.value)} />
+                                </div>
+                                <div className="form-group mb-2">
+                                    <label className="form-label">移动网络 :</label>
+                                    <input
+                                        type="text"
+                                        placeholder="移动网络 "
+                                        name="mobile"
+                                        className="form-control"
+                                        value = {mobile}
+                                        onChange={e=>setMobile(e.target.value)} />
+                                </div>
+                                <div className="form-group mb-2">
+                                    <label className="form-label">数字农业 :</label>
+                                    <input
+                                        type="text"
+                                        placeholder="数字农业 "
+                                        name="agriculture"
+                                        className="form-control"
+                                        value = {agriculture}
+                                        onChange={e=>setAgriculture(e.target.value)} />
+                                </div>
+                                <div className="form-group mb-2">
+                                    <label className="form-label">数字交通 :</label>
+                                    <input
+                                        type="text"
+                                        placeholder="数字交通 "
+                                        name="traffic"
+                                        className="form-control"
+                                        value = {traffic}
+                                        onChange={e=>setTraffic(e.target.value)} />
+                                </div>
+
+                                <div className="form-group mb-2">
+                                    <label className="form-label">数字水利 :</label>
+                                    <input
+                                        type="text"
+                                        placeholder="数字水利 "
+                                        name="irrigation"
+                                        className="form-control"
+                                        value = {irrigation}
+                                        onChange={e=>setIrrigation(e.target.value)} />
+                                </div>
+                                <div className="form-group mb-2">
+                                    <label className="form-label">数字电力 :</label>
+                                    <input
+                                        type="text"
+                                        placeholder="数字电力 "
+                                        name="power"
+                                        className="form-control"
+                                        value = {power}
+                                        onChange={e=>setPower(e.target.value)} />
+                                </div>
+                                <div className="form-group mb-2">
+                                    <label className="form-label">数字物流 :</label>
+                                    <input
+                                        type="text"
+                                        placeholder="数字物流 "
+                                        name="logistics"
+                                        className="form-control"
+                                        value = {logistics}
+                                        onChange={e=>setLogistics(e.target.value)} />
+                                </div>
+                                <div className="form-group mb-2">
+                                    <label className="form-label">政务服务 :</label>
+                                    <input
+                                        type="text"
+                                        placeholder="政务服务 "
+                                        name="government"
+                                        className="form-control"
+                                        value = {government}
+                                        onChange={e=>setGovernment(e.target.value)} />
+                                </div>
+                                <div className="form-group mb-2">
+                                    <label className="form-label">电商服务 :</label>
+                                    <input
+                                        type="text"
+                                        placeholder="电商服务 "
+                                        name="online"
+                                        className="form-control"
+                                        value = {online}
+                                        onChange={e=>setOnline(e.target.value)} />
+                                </div>
+                                <div className="form-group mb-2">
+                                    <label className="form-label">教育服务 :</label>
+                                    <input
+                                        type="text"
+                                        placeholder="教育服务 "
+                                        name="education"
+                                        className="form-control"
+                                        value = {education}
+                                        onChange={e=>setEducation(e.target.value)} />
+                                </div>
+                                <div className="form-group mb-2">
+                                    <label className="form-label">医疗服务 :</label>
+                                    <input
+                                        type="text"
+                                        placeholder="医疗服务 "
+                                        name="medical"
+                                        className="form-control"
+                                        value = {medical}
+                                        onChange={e=>setMedical(e.target.value)} />
+                                </div>
+                                <div className="form-group mb-2">
+                                    <label className="form-label">土壤环境 :</label>
+                                    <input
+                                        type="text"
+                                        placeholder="土壤环境 "
+                                        name="soil"
+                                        className="form-control"
+                                        value = {soil}
+                                        onChange={e=>setSoil(e.target.value)} />
+                                </div>
+                                <div className="form-group mb-2">
+                                    <label className="form-label">水环境 :</label>
+                                    <input
+                                        type="text"
+                                        placeholder="水环境 "
+                                        name="water"
+                                        className="form-control"
+                                        value = {water}
+                                        onChange={e=>setWater(e.target.value)} />
+                                </div>
+                                <div className="form-group mb-2">
+                                    <label className="form-label">大气环境 :</label>
+                                    <input
+                                        type="text"
+                                        placeholder="大气环境 "
+                                        name="air"
+                                        className="form-control"
+                                        value = {air}
+                                        onChange={e=>setAir(e.target.value)} />
+                                </div>
+                                <div className="form-group mb-2">
+                                    <label className="form-label">应急防控 :</label>
+                                    <input
+                                        type="text"
+                                        placeholder="应急防控 "
+                                        name="emergency"
+                                        className="form-control"
+                                        value = {emergency}
+                                        onChange={e=>setEmergency(e.target.value)} />
+                                </div>
+                                <div className="form-group mb-2">
+                                    <label className="form-label">技术应用安全 :</label>
+                                    <input
+                                        type="text"
+                                        placeholder="技术应用安全 "
+                                        name="technology"
+                                        className="form-control"
+                                        value = {technology}
+                                        onChange={e=>setTechnology(e.target.value)} />
+                                </div>
+                                <div className="form-group mb-2">
+                                    <label className="form-label">数据安全 :</label>
+                                    <input
+                                        type="text"
+                                        placeholder="数据安全 "
+                                        name="data"
+                                        className="form-control"
+                                        value = {data}
+                                        onChange={e=>setData(e.target.value)} />
                                 </div>
 
 

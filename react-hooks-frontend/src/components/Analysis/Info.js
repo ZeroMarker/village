@@ -1,27 +1,20 @@
-import React,{useState,useEffect} from 'react'
+import React, {useState,useEffect} from 'react'
 import InfoService from '../../services/InfoService'
-import AddInfoComponent from "./AddInfoComponent";
+import {useNavigate} from "react-router-dom";
 import {Card} from "react-bootstrap";
-const ListInfoComponent = () => {
-
+const Info = () => {
     // define Infos state and get a method to update Infos
     const [Infos, setInfos] = useState([])
-
-    // define addInfo's Pop-ups state
-    const [showAddInfo,setShowAddInfo] = useState(false);
-
+    // navigate to add info page
+    const navigate = useNavigate();
+    const addInfo = () => {
+        navigate("/addinfo");
+    }
     // get Infos data from backend
     const getAllInfos = () =>{
         InfoService.getAllInfos().then((response) => {
             // console.log(response.data)
             setInfos(response.data);
-        }).catch(error=>{
-            console.log(error)
-        })
-    }
-    const  getInfoRate = () =>{
-        InfoService.infoRate().then((response) => {
-            console.log(response.data)
         }).catch(error=>{
             console.log(error)
         })
@@ -40,17 +33,10 @@ const ListInfoComponent = () => {
             console.log(error)
         })
     }
-
     // Call the method when the component dismount
     useEffect(() => {
-
         getAllInfos();
-
-
     }, [Infos])
-
-
-
     return (
         <div className="" style={{position:"relative"}}>
             <Card>
@@ -59,10 +45,9 @@ const ListInfoComponent = () => {
                         数据列表
                     </Card.Title>
                     <div className="btn-group mx-3" role="group">
-                        <button className="btn btn-primary mb-2" onClick={()=>setShowAddInfo(true)}>添加数据</button>
-                        <button className="btn btn-primary mb-2" onClick={()=>getInfoRate()}>分析数据</button>
-                        <button className="btn btn-primary mb-2" onClick={()=>reInfoRate()}>重新分析</button>
-                        <button className="btn btn-primary mb-2" onClick={()=>clearRate()}>清除评价</button>
+                        <button className="btn btn-primary mb-2" onClick={()=>addInfo()}>添加数据</button>
+                        <button className="btn btn-primary mb-2" onClick={()=>reInfoRate()}>水平测度</button>
+                        <button className="btn btn-primary mb-2" onClick={()=>clearRate()}>清除测度</button>
                     </div>
 
                     <table className="table table-bordered table-striped">
@@ -124,14 +109,9 @@ const ListInfoComponent = () => {
                         }
                         </tbody>
                     </table>
-
                 </Card.Body>
             </Card>
-            {
-                showAddInfo? <AddInfoComponent setShowAddInfo={setShowAddInfo} getAllInfos={getAllInfos} /> : null
-            }
         </div>
     )
 }
-
-export default ListInfoComponent;
+export default Info;

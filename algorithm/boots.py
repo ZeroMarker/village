@@ -77,10 +77,13 @@ ewm.to_excel('二级信息熵.xlsx', index=True)
 print(ewm)
 # 结果
 w = cal_weight(indicator, project, std_value)
+w_new = pd.DataFrame(w, ind)
 w = pd.DataFrame(w, index=data.columns, columns=['权重'])
 print("Weight")
 print(w)
 w.to_excel('二级权重.xlsx', index=True)
+
+w_new = pd.DataFrame()
 broadcast = np.tile(w.T, (std_value.shape[0], 1))
 sc = std_value * broadcast
 print(sc)

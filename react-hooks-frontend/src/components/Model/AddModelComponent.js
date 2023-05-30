@@ -39,7 +39,7 @@ const AddModelComponent = ({setShowAddModel,getAllModels}) => {
            <div className="">
                <div className="row">
                    <div className="card col-md-6 offset-md-3 offset-md-3" style={{boxShadow:"1px 2px 2px grey,-1px -2px 2px grey"}}>
-                      <div style={{textAlign:"center",fontSize:"20px",fontWeight:"bold"}}> Add Model</div>
+                      <div style={{textAlign:"center",fontSize:"20px",fontWeight:"bold"}}>添加模型</div>
                        <div className="card-body" >
                            <form >
                                <div className="form-group mb-2">

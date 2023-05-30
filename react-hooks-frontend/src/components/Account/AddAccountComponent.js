@@ -6,11 +6,12 @@ const AddAccountComponent = ({setShowAddAccount,getAllAccounts}) => {
     const [accountName, setAccountName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [roles, setRoles] = useState("")
 
     const saveAccount = (e)=>{
         e.preventDefault();
 
-        const Account = {accountName, email, password};
+        const Account = {accountName, email, roles, password};
 
         // console.log(Account)
 
@@ -36,7 +37,7 @@ const AddAccountComponent = ({setShowAddAccount,getAllAccounts}) => {
            <div className="">
                <div className="row">
                    <div className="card col-md-6 offset-md-3 offset-md-3" style={{boxShadow:"1px 2px 2px grey,-1px -2px 2px grey"}}>
-                      <div style={{textAlign:"center",fontSize:"20px",fontWeight:"bold"}}> Add Account</div>
+                      <div style={{textAlign:"center",fontSize:"20px",fontWeight:"bold"}}>添加用户</div>
                        <div className="card-body">
                            <form>
                                <div className="form-group mb-2">
@@ -50,14 +51,24 @@ const AddAccountComponent = ({setShowAddAccount,getAllAccounts}) => {
                                     onChange={e=>setAccountName(e.target.value)} />
                                </div>
                                <div className="form-group mb-2">
-                                   <label className="form-label">Account Information :</label>
+                                   <label className="form-label">邮箱 :</label>
                                    <input
-                                    type="text"
+                                    type="email"
                                     placeholder="邮箱"
                                     name="email"
                                     className="form-control"
                                     value = {email}
                                     onChange={e=>setEmail(e.target.value)} />
+                               </div>
+                               <div className="form-group mb-2">
+                                   <label className="form-label">权限 :</label>
+                                   <input
+                                       type="roles"
+                                       placeholder="权限"
+                                       name="roles"
+                                       className="form-control"
+                                       value = {roles}
+                                       onChange={e=>setRoles(e.target.value)} />
                                </div>
                                <div className="form-group mb-2">
                                    <label className="form-label">密码 :</label>

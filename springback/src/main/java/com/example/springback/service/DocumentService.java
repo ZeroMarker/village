@@ -27,6 +27,10 @@ public class DocumentService {
         return documentRepository.save(document);
     }
 
+    public List<Document> getDocumentsByTitle(String title) {
+        return documentRepository.findAllByTitleContaining(title);
+    }
+
     // Build get document by id REST API
     public Document getDocumentById(long id){
         log.info("Enter document service and get a document by id at time : " + new Date().toString());

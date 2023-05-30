@@ -59,7 +59,7 @@ const UpdateDocumentComponent = ({id,setShowUpdateDocument,getAllDocuments}) => 
            <div className="">
                <div className="row">
                    <div className="card col-md-6 offset-md-3 offset-md-3" style={{boxShadow:"1px 2px 2px grey,-1px -2px 2px grey"}}>
-                        <h2 className="text-center">更新文件</h2>
+                        <h2 className="text-center">编辑文件</h2>
                        <div className="card-body">
                            <form>
                                <div className="form-group mb-2">
@@ -75,7 +75,7 @@ const UpdateDocumentComponent = ({id,setShowUpdateDocument,getAllDocuments}) => 
                                <div className="form-group mb-2">
                                    <label className="form-label">时间 :</label>
                                    <input 
-                                    type="text" 
+                                    type="date"
                                     placeholder="时间"
                                     name="time"
                                     className="form-control"

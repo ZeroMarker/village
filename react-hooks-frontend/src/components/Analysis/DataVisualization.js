@@ -45,11 +45,11 @@ const DataVisualization = () => {
 
                             cursor={false}
                         />
-                        <Bar name="网络基础设施" dataKey="network" stackId="a" fill="#8884d8" />
-                        <Bar name="数字产业转型" dataKey="industry" stackId="a" fill="#32229d" />
-                        <Bar name="公共服务建设" dataKey="service" stackId="a" fill="#86dc9d" />
-                        <Bar name="生态环境保护" dataKey="ecosystem" stackId="a" fill="#16779d" />
-                        <Bar name="安全防控" dataKey="security" stackId="a" fill="#dc119d" />
+                        <Bar name="网络基础设施" dataKey="network" stackId="a" fill="#DC143C" />
+                        <Bar name="数字产业转型" dataKey="industry" stackId="a" fill="#FF8C00" />
+                        <Bar name="公共服务建设" dataKey="service" stackId="a" fill="#228B22" />
+                        <Bar name="生态环境保护" dataKey="ecosystem" stackId="a" fill="#00FFFF" />
+                        <Bar name="安全防控" dataKey="security" stackId="a" fill="#EE82EE" />
                     </BarChart>
                 </Card.Text>
             </Card.Body>

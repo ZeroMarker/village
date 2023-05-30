@@ -1,31 +1,20 @@
 import React,{ useState,useEffect } from 'react'
-
 import ModelsService from '../../services/ModelService'
 
 const UpdateModelComponent = ({id,setShowUpdateModel,getAllModels}) => {
-
     const [modelName, setModelName] = useState("")
     const [modelDescription, setModelDescription] = useState("")
     const [modelContent, setModelContent] = useState("")
 
-
-
     const UpdateModel = (e)=>{
         e.preventDefault();
-
         const model = {modelName,modelDescription,modelContent};
-
         // console.log(model)
         ModelsService.updateModel(id, model).then(response => {
-
             setShowUpdateModel(false);
-
             getAllModels();
-
         }).catch(error=>{
-
             console.log(error);
-
         })
     }
 
@@ -44,15 +33,13 @@ const UpdateModelComponent = ({id,setShowUpdateModel,getAllModels}) => {
         fetchData();
     }, [id]);
 
- 
-
     return (
         <div style={{position:"absolute",width:"100%",top:"250px",left:"50%",transform:"translateX(-50%) translateY(-50%)"}}>
             <br/>
            <div className="">
                <div className="row">
                    <div className="card col-md-6 offset-md-3 offset-md-3" style={{boxShadow:"1px 2px 2px grey,-1px -2px 2px grey"}}>
-                        <h2 className="text-center">Update Model</h2>
+                        <h2 className="text-center">编辑模型</h2>
                        <div className="card-body">
                            <form>
                                <div className="form-group mb-2">

@@ -3,6 +3,7 @@ import ModelService from '../../services/ModelService'
 import Header from "../../layouts/Header";
 import {useNavigate} from "react-router-dom";
 import {Card} from "react-bootstrap";
+import Footer from "../../layouts/Footer";
 
 const Model = () => {
 
@@ -61,7 +62,7 @@ const Model = () => {
                     </ul>
                 </Card.Body>
             </Card>
-
+            <Footer/>
         </div>
     )
 }

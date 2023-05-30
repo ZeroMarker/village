@@ -45,19 +45,19 @@ const AddInfoComponent = ({setShowAddInfo,getAllInfos}) => {
 
 
     return (
-        <div className="z-1" style={{position:"absolute",width:"100%",top:"250px",left:"50%",transform:"translateX(-50%) translateY(-50%)"}}>
+        <div className="z-1" >
 
             <div className="">
                 <div className="row">
                     <div className="card col-md-6 offset-md-3 offset-md-3" style={{boxShadow:"1px 2px 2px grey,-1px -2px 2px grey"}}>
-                        <div style={{textAlign:"center",fontSize:"20px",fontWeight:"bold"}}> Add Info</div>
+                        <div style={{textAlign:"center",fontSize:"20px",fontWeight:"bold"}}> 添加数据</div>
                         <div className="card-body">
                             <form>
                                 <div className="form-group mb-2">
-                                    <label className="form-label">Info Name :</label>
+                                    <label className="form-label">测度对象 :</label>
                                     <input
                                         type="text"
-                                        placeholder="Enter info name"
+                                        placeholder="测度对象"
                                         name="infoName"
                                         className="form-control"
                                         value = {infoName}

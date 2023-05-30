@@ -25,30 +25,53 @@ public class AccountService {
         return new LoginMessage("注册成功", Boolean.TRUE);
     }
     
-    public LoginMessage  login(Account account) {
-        Account account1 = accountRepository.findOneByEmail(account.getEmail());
+    public Account login(Account account) {
+        Account account1 = accountRepository.findByAccountName(account.getAccountName());
         if (account1 != null) {
             String password = account.getPassword();
             String encodedPassword = account1.getPassword();
             boolean isPwdRight = password.equals(encodedPassword);
             if (isPwdRight) {
-                Optional<Account> account2 = Optional.ofNullable(accountRepository.findOneByEmailAndPassword(account.getAccountName(), encodedPassword));
-                if (account2.isPresent()) {
-                    return new LoginMessage("Login Success", true);
-                } 
-                else {
-                    return new LoginMessage("Login Failed", false);
-                }
+                return account1;
             } 
             else {
 
-                return new LoginMessage("password Not Match", false);
+//                return new LoginMessage("密码错误", false);
+                return null;
             }
         }
         else {
-            return new LoginMessage("Email not exits", false);
+//            return new LoginMessage("邮箱不存在", false);
+            return null;
         }
     }
+    public Account admin(Account account) {
+        Account account1 = accountRepository.findByAccountName(account.getAccountName());
+        if (account1 != null) {
+            String password = account.getPassword();
+            String roles = account1.getRoles();
+            String encodedPassword = account1.getPassword();
+            boolean isPwdRight = password.equals(encodedPassword);
+            if (isPwdRight) {
+                if (roles.equals("admin")) {
+                    return account1;
+                }
+                else {
+                    return null;
+                }
+            }
+            else {
+
+//                return new LoginMessage("密码错误", false);
+                return null;
+            }
+        }
+        else {
+//            return new LoginMessage("邮箱不存在", false);
+            return null;
+        }
+    }
+
 
     public List<Account> getAllAccounts(){
         log.info("Enter account service and get all accounts at time : " + new Date().toString());
@@ -66,6 +89,10 @@ public class AccountService {
         log.info("Enter account service and get a account by id at time : " + new Date().toString());
         Account account = accountRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Account not exist with id" + id));
         return account;
+    }
+
+    public Account getAccountByName(String name) {
+        return accountRepository.findByAccountName(name);
     }
 
     // Build update account REST API

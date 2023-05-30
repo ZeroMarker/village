@@ -1,8 +1,9 @@
 import React,{useState,useEffect} from 'react'
 import DocumentService from '../../services/DocumentService'
 import Header from "../../layouts/Header";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {Card} from "react-bootstrap";
+import Footer from "../../layouts/Footer";
 
 const Document = () => {
 
@@ -36,10 +37,16 @@ const Document = () => {
             <Header/>
             <Card>
 
-                <Card.Body>
+                <Card.Body className="text-center">
+                    {/*<img src="https://p5.itc.cn/images01/20230413/016401200cc5421988e99310b996deb9.jpeg" alt="shuzi" className="w-100"/>*/}
+
                     <Card.Title className="text-center">
-                        政策文件
+                        <h2>
+                            政策文件
+                        </h2>
+                        <img src="https://p8.itc.cn/images01/20230413/a8566b12cdef40a2ac6ccb3870b4d076.jpeg" alt="shuzi" className="w-75"/>
                     </Card.Title>
+
                     <ul>
                         {
                             documents.map(document=>
@@ -62,9 +69,12 @@ const Document = () => {
                             )
                         }
                     </ul>
+                    <hr/>
+                    <Link to="/document/find" className="link-success text-decoration-none">查找政策文件</Link>
                 </Card.Body>
-            </Card>
 
+            </Card>
+            <Footer/>
         </div>
     )
 }

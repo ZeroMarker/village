@@ -6,6 +6,7 @@ import Header from "../../layouts/Header";
 import HeaderComponent from "../../layouts/HeaderComponent";
 import {Card} from "react-bootstrap";
 import FooterComponent from "../../layouts/FooterComponent";
+import DocumentService from "../../services/DocumentService";
 
 const ListInfoComponent = () => {
 
@@ -21,9 +22,32 @@ const ListInfoComponent = () => {
     // define the updateId
     let [activeId,setActiveId] = useState(null);
 
+    const [showConfirmation, setShowConfirmation] = useState(false);
+
+    // const handleDeleteClick = () => {
+    //     setShowConfirmation(true);
+    // };
+
+    const handleConfirmDelete = () => {
+        // 执行删除操作
+        // 这里可以调用删除函数或者传递删除操作给父组件
+        InfoService.deleteInfo(activeId).then(response=>{
+
+            getAllInfos();
+
+        }).catch(error=>{
+            console.log(error)
+        })
+        setShowConfirmation(false);
+    };
+
+    const handleCancelDelete = () => {
+        setShowConfirmation(false);
+    };
 
     // get Infos data from backend
     const getAllInfos = () =>{
+
         InfoService.getAllInfos().then((response) => {
             // console.log(response.data)
             setInfos(response.data);
@@ -47,13 +71,15 @@ const ListInfoComponent = () => {
 
     const deleteInfo = (InfoId) => {
         // console.log(InfoId);
-        InfoService.deleteInfo(InfoId).then(response=>{
-
-            getAllInfos();
-
-        }).catch(error=>{
-            console.log(error)
-        })
+        setShowConfirmation(true);
+        setActiveId(InfoId);
+        // InfoService.deleteInfo(InfoId).then(response=>{
+        //
+        //     getAllInfos();
+        //
+        // }).catch(error=>{
+        //     console.log(error)
+        // })
     }
 
 
@@ -127,7 +153,7 @@ const ListInfoComponent = () => {
                                         <td>{Info.technology}</td>
                                         <td>{Info.data}</td>
                                         <td>
-                                            <button className="btn btn-info" onClick={() => updateInfo(Info.infoId)}>更新</button>
+                                            <button className="btn btn-info" onClick={() => updateInfo(Info.infoId)}>编辑</button>
                                             <button className="btn btn-danger" onClick={() => deleteInfo(Info.infoId)}
 
                                             >删除</button>
@@ -143,6 +169,16 @@ const ListInfoComponent = () => {
                         {
                             showUpdateInfo? <UpdateInfoComponent id={activeId} setShowUpdateInfo={setShowUpdateInfo} getAllInfos={getAllInfos} /> : null
                         }
+                        {showConfirmation && (
+                            <div style={{position:"absolute",width:"50%",top:"250px",left:"50%",transform:"translateX(-50%) translateY(-50%)"}} className="modal-dialog modal-dialog-centered bg-info rounded">
+
+                                <div className="modal-content">
+                                    <p>确认删除吗？</p>
+                                    <button onClick={handleConfirmDelete} className="rounded">确认</button>
+                                    <button onClick={handleCancelDelete} className="rounded">取消</button>
+                                </div>
+                            </div>
+                        )}
                     </Card.Text>
                 </Card.Body>
             </Card>

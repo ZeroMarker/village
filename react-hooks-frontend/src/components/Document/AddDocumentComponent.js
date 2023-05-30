@@ -41,7 +41,7 @@ const AddDocumentComponent = ({setShowAddDocument,getAllDocuments}) => {
            <div className="">
                <div className="row">
                    <div className="card col-md-6 offset-md-3 offset-md-3" style={{boxShadow:"1px 2px 2px grey,-1px -2px 2px grey"}}>
-                      <div style={{textAlign:"center",fontSize:"20px",fontWeight:"bold"}}> Add Document</div>
+                      <div style={{textAlign:"center",fontSize:"20px",fontWeight:"bold"}}>添加政策文件</div>
                        <div className="card-body">
                            <form>
                                <div className="form-group mb-2">
@@ -57,7 +57,7 @@ const AddDocumentComponent = ({setShowAddDocument,getAllDocuments}) => {
                                <div className="form-group mb-2">
                                    <label className="form-label">时间 :</label>
                                    <input 
-                                    type="text" 
+                                    type="date"
                                     placeholder="时间 "
                                     name="time"
                                     className="form-control"

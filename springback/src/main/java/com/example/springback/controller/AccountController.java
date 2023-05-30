@@ -28,8 +28,12 @@ public class AccountController {
     }
 
     @PostMapping("/login")
-    public LoginMessage loginUser(@RequestBody Account account) {
-        return accountService.login(account);
+    public ResponseEntity<Account> loginUser(@RequestBody Account account) {
+        return ResponseEntity.ok(accountService.login(account));
+    }
+    @PostMapping("/loginadmin")
+    public ResponseEntity<Account> loginAdmin(@RequestBody Account account) {
+        return ResponseEntity.ok(accountService.login(account));
     }
 
     @GetMapping
@@ -51,6 +55,11 @@ public class AccountController {
         log.info("Enter account controller and get account by id  at time : " + new Date());
         Account account = accountService.getAccountById(id);
         return ResponseEntity.ok(account);
+    }
+
+    @GetMapping("/find/{accountName}")
+    public ResponseEntity<Account> getAccountByName(@PathVariable String accountName) {
+        return ResponseEntity.ok(accountService.getAccountByName(accountName));
     }
 
     // Build update account REST API

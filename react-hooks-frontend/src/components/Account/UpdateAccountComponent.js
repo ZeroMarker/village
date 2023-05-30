@@ -7,6 +7,7 @@ const UpdateAccountComponent = ({id,setShowUpdateAccount,getAllAccounts}) => {
     const [accountName, setAccountName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [roles, setRoles] = useState("")
 
     const UpdateAccount = (e)=>{
         e.preventDefault();
@@ -24,10 +25,11 @@ const UpdateAccountComponent = ({id,setShowUpdateAccount,getAllAccounts}) => {
         const fetchData = async () => {
             try {
                 const response = await AccountsService.getAccountById(id);
-                const { AccountName, email, password } = response.data;
-                setAccountName(AccountName);
+                const { accountName, email, password, roles} = response.data;
+                setAccountName(accountName);
                 setEmail(email);
                 setPassword(password)
+                setRoles(roles)
             } catch (error) {
                 console.log(error);
             }
@@ -42,7 +44,7 @@ const UpdateAccountComponent = ({id,setShowUpdateAccount,getAllAccounts}) => {
            <div className="">
                <div className="row">
                    <div className="card col-md-6 offset-md-3 offset-md-3" style={{boxShadow:"1px 2px 2px grey,-1px -2px 2px grey"}}>
-                        <h2 className="text-center">Update Account</h2>
+                        <h2 className="text-center">编辑用户</h2>
                        <div className="card-body">
                            <form>
                                <div className="form-group mb-2">
@@ -63,6 +65,16 @@ const UpdateAccountComponent = ({id,setShowUpdateAccount,getAllAccounts}) => {
                                     name="email"
                                     className="form-control"
                                     value = {email}
+                                    onChange={e=>setEmail(e.target.value)} />
+                               </div>
+                               <div className="form-group mb-2">
+                                   <label className="form-label">权限 :</label>
+                                   <input
+                                    type="text"
+                                    placeholder="权限"
+                                    name="roles"
+                                    className="form-control"
+                                    value = {roles}
                                     onChange={e=>setEmail(e.target.value)} />
                                </div>
                                <div className="form-group mb-2">

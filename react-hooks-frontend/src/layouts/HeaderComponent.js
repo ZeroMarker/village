@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {Link} from 'react-router-dom'
+import AuthContext from "../components/Login/AuthProvider";
 
 const HeaderComponent = () => {
+    const {auth, setAuth} = useContext(AuthContext);
     return (
 
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
@@ -19,7 +21,7 @@ const HeaderComponent = () => {
                                 <Link to="/admin/infos" className="nav-link">数据管理</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/admin/rates" className="nav-link">评价管理</Link>
+                                <Link to="/admin/rates" className="nav-link">测度管理</Link>
                             </li>
                             <li className="nav-item">
                                 <Link to="/admin/models" className="nav-link">模型管理</Link>
@@ -27,6 +29,14 @@ const HeaderComponent = () => {
                             <li className="nav-item">
                                 <Link to="/admin/documents" className="nav-link">政策文件管理</Link>
                             </li>
+
+                            <li className="nav-item float-right">
+                                <Link to="/admin" className="nav-link">{auth.accountName}</Link>
+                            </li>
+                            <li className="nav-item float-right">
+                                <Link to="/logout" className="nav-link">退出登录</Link>
+                            </li>
+
                         </ul>
                     </div>
                 </nav>

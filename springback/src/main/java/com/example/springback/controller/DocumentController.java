@@ -25,6 +25,11 @@ public class DocumentController {
         return documentService.getAllDocuments();
     }
 
+    @GetMapping("/find/{title}")
+    public List<Document> getAllDocumentsContain(@PathVariable String title) {
+        return documentService.getDocumentsByTitle(title);
+    }
+
     // Build create document REST API
     @PostMapping
     public Document createDocument(@RequestBody Document document){

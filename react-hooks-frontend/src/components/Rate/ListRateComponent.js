@@ -93,7 +93,7 @@ const ListRateComponent = () => {
                                         <td>{Rate.security}</td>
                                         <td>{Rate.overall}</td>
                                         {/*<td>*/}
-                                        {/*    <button className="btn btn-info" onClick={() => updateRate(Rate.rateId)}>更新</button>*/}
+                                        {/*    <button className="btn btn-info" onClick={() => updateRate(Rate.rateId)}>编辑</button>*/}
                                         {/*    <button className="btn btn-danger" onClick={() => deleteRate(Rate.rateId)}*/}
                                         {/*            */}
                                         {/*    >删除</button>*/}
